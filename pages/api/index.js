@@ -5,8 +5,12 @@ export default (req, res) => {
 			res.json({ status: "ok", error: "Only 'GET' requests allowed." });
 		} else {
 			const fetchUrl = Object.keys(req.query)[0];
+			window.history.push("http://menu.dartmouth.edu/");
+
 			const options = {
-				headers: { "Content-Type": "application/json" },
+				headers: {
+					"Content-Type": "application/json",
+				},
 			};
 
 			if (!fetchUrl) res.json({ status: "ok", error: "No fetch url was provided" }, options);
