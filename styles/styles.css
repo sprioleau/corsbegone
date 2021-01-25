@@ -96,6 +96,20 @@ code {
   align-items: center;
   max-width: 550px;
   padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.notifier {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--black);
+  padding: 1rem 2rem;
+  border: 2px solid var(--orange);
 }
 
 .header {
@@ -154,6 +168,9 @@ code {
   margin-bottom: 0.75rem;
 }
 
+.description__app-url:hover {
+  cursor: copy;
+}
 
 .footer {
   flex: 0 1 80px;

@@ -1,7 +1,12 @@
 import Head from "next/head";
+import useClipboard from "react-use-clipboard";
+
+const APP_URL = "https://corsbegone.netlify.app/";
 
 const Home = () => {
-	const result = fetch(" https://api.spotify.com/v1/albums").then((res) => res.json());
+	const [isCopied, setCopied] = useClipboard(APP_URL, {
+		successDuration: 1500,
+	});
 
 	return (
 		<div className="app">
@@ -11,6 +16,7 @@ const Home = () => {
 			</Head>
 
 			<div className="main-content-wrapper">
+				{isCopied && <Notifier copiedText={APP_URL} />}
 				<main className="main-content">
 					<header className="header">
 						<h1 className="header__title">
@@ -28,8 +34,11 @@ const Home = () => {
 							sharing (CORS) issues.
 						</p>
 						<p>
-							To use, prefix your fetch url with <code>https://corsbegone.netlify.app/</code>. CORS Be Gone will fetch
-							the data on its server and returning the results back to your client.
+							To use, prefix your fetch url with{" "}
+							<code className="description__app-url" onClick={setCopied}>
+								https://corsbegone.netlify.app/
+							</code>
+							. CORS Be Gone will fetch the data on its server and returning the results back to your client.
 						</p>
 					</section>
 				</main>
@@ -55,5 +64,11 @@ const Home = () => {
 		</div>
 	);
 };
+
+const Notifier = () => (
+	<div className="notifier">
+		<h4>{`Copied URL to clipboard`}</h4>
+	</div>
+);
 
 export default Home;
