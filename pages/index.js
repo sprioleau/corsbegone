@@ -1,10 +1,12 @@
 import Head from "next/head";
 
 const Home = () => {
+	const result = fetch(" https://api.spotify.com/v1/albums").then((res) => res.json());
+
 	return (
 		<div className="app">
 			<Head>
-				<title>CORS Be Gone</title>
+				<title>CorsBeGone | Develop pleasantly</title>
 				<link rel="icon" href="/blast.png" />
 			</Head>
 
@@ -13,7 +15,9 @@ const Home = () => {
 					<header className="header">
 						<h1 className="header__title">
 							<span>Welcome to</span>
-							<span>CORS Be Gone 💥</span>
+							<span>
+								CorsBeGone <span className="blast-icon">💥</span>
+							</span>
 						</h1>
 						<p className="header__subtitle">Your gateway to pleasant development</p>
 					</header>
